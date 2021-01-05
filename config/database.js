@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const config = require('./index');
+require('dotenv').config()
 
 module.exports = () => {
-    return mongoose.connect( config.dbConnectionString, {
+    return mongoose.connect(process.env.MONGODB_URI || config.dbConnectionString, {
         useNewUrlParser: true, 
         useUnifiedTopology: true
     }).then((data) => {
